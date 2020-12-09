@@ -70,7 +70,7 @@ chown -R $username:$username /var/log/$servicename/
 
 # ============== file ownership ==============
 chown -R $username:$username /usr/src/venv/$username
-chown -R $username:$username /usr/src/covid
+chown -R $username:$username /usr/src/$servicename
 chown -R $username:$username /var/log/$username/
 
 # ============== install daemon ==============
@@ -82,7 +82,7 @@ After=network.target
 
 [Service]
 User=$username
-WorkingDirectory=/usr/src/covid
+WorkingDirectory=/usr/src/$servicename
 Environment="ENV=$env"
 ExecStart=/usr/src/venv/$servicename/bin/gunicorn --log-syslog --workers 4 --bind 0.0.0.0:8000 $servicename.app:app
 
@@ -97,7 +97,7 @@ systemctl enable /etc/systemd/system/$servicename.service
 
 # ======= nginx ==========
 rm /etc/nginx/sites-enabled/default
-ln -s /usr/src/covid/prod_ops/$username.conf /etc/nginx/sites-enabled/default
+ln -s PATH/TO/NGINX.CONF /etc/nginx/sites-enabled/default
 
 # ===== start services =========
 service $username start
