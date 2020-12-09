@@ -48,7 +48,7 @@ done
 for host in servers
 do
     echo "Deploying newly tared code"
-ssh -t  -i $sshpath brio@app-arsenic "
+ssh -t  -i $sshpath host "
                    sudo /bin/rm -rf $prodpath &&
                    sudo /bin/ln -s /usr/src/deploys/$deployname $prodpath &&
                    cd $prodpath &&
