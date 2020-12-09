@@ -1,0 +1,16 @@
+*~
+*__pycache__*
+*.pyc
+\#*\#
+env.yml
+env.yml.bck
+node_modules/
+
+# generated files
+*.service
+
+# SSL certs
+*.crt
+*.csr
+*.key
+*.pem
