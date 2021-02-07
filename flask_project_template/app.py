@@ -3,6 +3,8 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(PROJECT_ROOT)
 
+from project import app, logger, CONFIG, db
+from routes import *
 
 def run_migrations_on_dev_server_restart():
     logger.info('Running migrations')
@@ -65,5 +67,4 @@ if __name__ == '__main__':
     # uncomment to automatically run migrations when the dev server restarts:
     # run_migrations_on_dev_server_restart()
     logger.info('Running dev server')
-
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8000, debug=True)
